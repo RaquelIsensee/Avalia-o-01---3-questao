@@ -22,7 +22,7 @@
               <th>Nome</th>
               <th>Status</th>
             </tr>
-            <tr v-for="p in Alunos" :key="p.id" >
+            <tr v-for="p in Alunos" :key="p.id" :class="p.status">
                 <td>{{ p.nome }}</td>
                 <td>{{ p.status }}</td>
             </tr>
@@ -63,13 +63,11 @@ methods:{
         mediaExercicio: this.mediaExercicio,
         media: (parseFloat(this.nota1) + parseFloat(this.nota2) * 2 + parseFloat(this.nota3) * 3 + parseFloat(this.mediaExercicio))/7 
       }
-      console.log(aluno.media)
       if(aluno.media >= 7){
-        this.status = 'Aprovado'
+        aluno.status = 'Aprovado'
       } else{
-        this.status = 'Reprovado'
+        aluno.status = 'Reprovado'
       }
-      aluno.status = this.status
       this.Alunos.push(aluno)
     },
 
